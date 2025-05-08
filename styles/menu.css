@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100dvh;
+  gap: 0.04rem;
+  overflow-y: auto;
+  background-color: rgb(23 23 23 / 1);
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    gap: 0.08rem;
+    padding: 3rem;
+  }
+}
+
+.menu__brand {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 1024px) {
+  .menu__brand {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.menu__nav {
+  margin-bottom: 0;
+}
+
+.menu__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: unset;
+}
+
+.menu__nav-link {
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: none;
+  display: inline-block;
+  position: relative;
+}
+
+.menu__nav-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Remove underline effect from menu links */
+.menu__nav-link::after {
+  content: none;
+}
+.menu__nav-link:hover::after {
+  width: 0;
+}
+
+.menu__cta {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 7rem;
+  border-radius: 9999px;
+  border: 0.5px solid rgba(255,255,255,0.2);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px #ffffff0f, inset 1px 1px 0 0 #ffffff14, 0 8px 40px -20px #fff3;
+  color: #fff;
+  font-size: 8px;
+  font-family: 'Michroma', sans-serif;
+  text-transform: capitalize;
+  padding-bottom: .125rem;
+  cursor: pointer;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.menu__cta:hover {
+  background-color: #ffffff0d;
+  border-color: rgba(255,255,255,0.4);
+}
+
+@media (min-width: 1024px) {
+  .menu__cta {
+    height: 3rem;
+    width: 14rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+}
+
+.menu__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+}
+
+.menu__footer .text-gradient {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  background: linear-gradient(90deg, #fff 0%, #b3b3b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 1024px) {
+  .menu__footer .text-gradient {
+    font-size: 1.1rem;
+  }
+}
+
+.menu__footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.menu__footer a:hover {
+  opacity: 0.8;
+}
+
+.menu__x {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: none;
+  z-index: 1100;
+}
+
+@media (min-width: 1024px) {
+  .menu__x {
+    top: 3rem;
+    left: 3rem;
+    height: 3rem;
+    width: 3rem;
+    transform: translateY(-25%);
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Menu Animation */
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu {
+  animation: menuFadeIn 0.3s ease forwards;
+}
+
+.magnetic {
+  /* Add any necessary styles for the magnetic effect */
+} 
