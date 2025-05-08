@@ -2473,26 +2473,26 @@ body {
 
 @media (min-width: 1024px) {
     .page-grid-mask {
-        --mouse-size:80rem;
+        --mouse-size: 80rem;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 100;
         width: 100%;
         height: 100%;
-        -webkit-mask-image: radial-gradient(#000 30%,#0000 60%);
-        mask-image: radial-gradient(#000 30%,#0000 60%);
+        -webkit-mask-image: radial-gradient(#000 30%, #0000 60%);
+        mask-image: radial-gradient(#000 30%, #0000 60%);
         -webkit-mask-size: var(--mouse-size) var(--mouse-size);
         mask-size: var(--mouse-size) var(--mouse-size);
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
-        -webkit-mask-position: calc(var(--mouse-x) - var(--mouse-size)/2) calc(var(--mouse-y) - var(--mouse-size)/2);
-        mask-position: calc(var(--mouse-x) - var(--mouse-size)/2) calc(var(--mouse-y) - var(--mouse-size)/2);
-        background-image: url(../images/bg-grid.png);
+        -webkit-mask-position: calc(var(--mouse-x) - var(--mouse-size) / 2) calc(var(--mouse-y) - var(--mouse-size) / 2);
+        mask-position: calc(var(--mouse-x) - var(--mouse-size) / 2) calc(var(--mouse-y) - var(--mouse-size) / 2);
+        background-image: url('/assets/images/bg-grid.png');
         background-size: contain;
         background-position: 0 -16.5rem;
         background-repeat: repeat-y;
-        pointer-events: none
+        pointer-events: none;
     }
 }
 
