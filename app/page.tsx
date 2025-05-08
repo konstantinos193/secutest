@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
 import ClientsSection from "@/components/clients-section"
@@ -12,10 +13,21 @@ import DecadesSection from '@/components/decades-section'
 import "@/styles/header.css"
 
 export default function Home() {
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    // Set video ready after a short delay to ensure proper hydration
+    const timer = setTimeout(() => {
+      setVideoReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <main>
-        <Hero videoReady={true} />
+        <Hero videoReady={videoReady} />
         <About />
         <ClientsSection />
         <ServicesSection />

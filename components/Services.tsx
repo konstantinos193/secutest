@@ -41,8 +41,8 @@ const Services = () => {
     const cleanupFns: (() => void)[] = [];
 
     elements.forEach((element) => {
-      let xSet = gsap.quickTo(element, "x", { duration: 0.3, ease: "power3" });
-      let ySet = gsap.quickTo(element, "y", { duration: 0.3, ease: "power3" });
+      const xSet = gsap.quickTo(element, "x", { duration: 0.3, ease: "power3" });
+      const ySet = gsap.quickTo(element, "y", { duration: 0.3, ease: "power3" });
 
       const onMove = (e: MouseEvent) => {
         const rect = element.getBoundingClientRect();

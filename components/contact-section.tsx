@@ -9,7 +9,7 @@ export default function ContactSection() {
     // Split each line of the heading into chars
     const lines = document.querySelectorAll('.contact__title span');
     const splits = Array.from(lines).map(line =>
-      new SplitType(line, { types: 'chars', tagName: 'div', charClass: 'char' })
+      new SplitType(line as HTMLElement, { types: 'chars', tagName: 'div', charClass: 'char' })
     );
     const chars1 = lines[0]?.querySelectorAll('.char') || [];
     const chars2 = lines[1]?.querySelectorAll('.char') || [];

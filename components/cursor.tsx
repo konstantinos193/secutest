@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 
-export default function Cursor() {
+const Cursor: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null)
-  const setLeft = useRef<any>(null)
-  const setTop = useRef<any>(null)
+  const setLeft = useRef<((value: number) => void) | null>(null)
+  const setTop = useRef<((value: number) => void) | null>(null)
 
   useEffect(() => {
     const cursor = cursorRef.current
@@ -20,8 +20,10 @@ export default function Cursor() {
 
     // Mouse move handler
     const onMouseMove = (e: MouseEvent) => {
-      setLeft.current(e.clientX)
-      setTop.current(e.clientY)
+      if (setLeft.current && setTop.current) {
+        setLeft.current(e.clientX)
+        setTop.current(e.clientY)
+      }
       if (
         (e.target as HTMLElement)?.matches?.("[data-hide-cursor]") ||
         (e.target as HTMLElement)?.closest?.("[data-hide-cursor]")
@@ -117,3 +119,5 @@ export default function Cursor() {
     </>
   )
 }
+
+export default Cursor

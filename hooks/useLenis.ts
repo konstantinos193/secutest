@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function useLenis() {
   useEffect(() => {
@@ -15,9 +17,14 @@ export default function useLenis() {
       }
       requestAnimationFrame(raf);
 
+      // Register ScrollTrigger if not already registered
+      if (typeof window !== "undefined" && gsap && !(gsap as any).ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
       // Optional: If you use GSAP ScrollTrigger
-      if (window.gsap && window.gsap.ScrollTrigger) {
-        lenis.on("scroll", window.gsap.ScrollTrigger.update);
+      if ((gsap as any).ScrollTrigger) {
+        lenis.on("scroll", (gsap as any).ScrollTrigger.update);
       }
 
       // Clean up

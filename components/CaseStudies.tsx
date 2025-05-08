@@ -46,7 +46,6 @@ const CaseStudies = () => {
     if (feature) {
       const left = feature.querySelector('.left');
       const right = feature.querySelector('.right');
-      const step1 = feature.querySelector('.step-1'); // image/caption
       const step2 = feature.querySelectorAll('.step-2 > span'); // icon
       const step3 = feature.querySelector('.step-3'); // heading
       const step4 = feature.querySelector('.step-4'); // description
@@ -107,8 +106,8 @@ const CaseStudies = () => {
     const magnetic = sectionRef.current.querySelectorAll('.magnetic');
     const cleanupFns: (() => void)[] = [];
     magnetic.forEach((element) => {
-      let xSet = gsap.quickTo(element, 'x', { duration: 0.3, ease: 'power3' });
-      let ySet = gsap.quickTo(element, 'y', { duration: 0.3, ease: 'power3' });
+      const xSet = gsap.quickTo(element, 'x', { duration: 0.3, ease: 'power3' });
+      const ySet = gsap.quickTo(element, 'y', { duration: 0.3, ease: 'power3' });
       const onMove = (e: Event) => {
         const mouseEvent = e as MouseEvent;
         const rect = element.getBoundingClientRect();

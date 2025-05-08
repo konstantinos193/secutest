@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import SplitType from "split-type";
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 interface MenuOverlayProps {
   open: boolean;
@@ -18,13 +18,12 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ open, onClose }) => {
   const brandRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
-  const splitInstance = useRef<any>(null);
+  const splitInstance = useRef<SplitType | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const router = useRouter();
   const pathname = usePathname();
 
   // Close handler with reverse animation
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     if (timelineRef.current) {
       timelineRef.current.reverse();
       // Wait for the reverse animation to finish, then call onClose
@@ -36,7 +35,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ open, onClose }) => {
       setIsVisible(false);
       onClose();
     }
-  };
+  }, [onClose]);
 
   useEffect(() => {
     if (open) setIsVisible(true);
@@ -127,8 +126,8 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ open, onClose }) => {
         const xMultiplier = isButton ? 0.3 : 0.1;
         const yMultiplier = isButton ? 0.2 : 0.5;
 
-        let xSet = gsap.quickTo(element, "x", { duration: 0.12, ease: "expo.out" });
-        let ySet = gsap.quickTo(element, "y", { duration: 0.12, ease: "expo.out" });
+        const xSet = gsap.quickTo(element, "x", { duration: 0.12, ease: "expo.out" });
+        const ySet = gsap.quickTo(element, "y", { duration: 0.12, ease: "expo.out" });
 
         const onMove = (e: Event) => {
           if (!(e instanceof MouseEvent)) return;
@@ -205,7 +204,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ open, onClose }) => {
         <nav id="menuNav" className="menu__nav">
           <ul className="menu__nav-list group" ref={menuItemsRef}>
             <li className="link magnetic">
-              <a
+              <Link
                 className="menu__nav-link"
                 href="/"
                 onClick={e => {
@@ -216,7 +215,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ open, onClose }) => {
                 }}
               >
                 HOME
-              </a>
+              </Link>
             </li>
             <li className="link magnetic">
               <Link className="menu__nav-link" href="/about">ABOUT</Link>
@@ -242,7 +241,16 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ open, onClose }) => {
           <span className="text-gradient">Send request</span>
         </button>
       </div>
-      <div className="menu__footer" ref={footerRef}>
+      <div
+        className="menu__footer"
+        ref={footerRef}
+        style={{
+          position: 'absolute',
+          left: 32,
+          bottom: 32,
+          margin: 0,
+        }}
+      >
         <a href="mailto:info@secu.com" className="text-gradient">info@secu.com</a>
       </div>
       <button className="menu__x button magnetic" type="button" onClick={handleClose}>

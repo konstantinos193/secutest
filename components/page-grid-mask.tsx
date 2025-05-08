@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef } from "react"
 
-const GRID_IMAGE = "/assets/images/bg-grid.png" // public/assets/images/bg-grid.png
+// const GRID_IMAGE = "/assets/images/bg-grid.png" // public/assets/images/bg-grid.png
 
 const PageGridMask: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null)

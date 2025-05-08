@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import Script from "next/script";
 import gsap from "gsap";
 import MenuOverlay from "./MenuOverlay";
 import Headroom from "headroom.js";
@@ -12,13 +11,14 @@ export default function Header() {
   useEffect(() => {
     const buttons = document.querySelectorAll(".magnetic");
     buttons.forEach((element) => {
-      let xSet = gsap.quickTo(element, "x", { duration: 0.3, ease: "power3" });
-      let ySet = gsap.quickTo(element, "y", { duration: 0.3, ease: "power3" });
+      const xSet = gsap.quickTo(element, "x", { duration: 0.3, ease: "power3" });
+      const ySet = gsap.quickTo(element, "y", { duration: 0.3, ease: "power3" });
 
-      const onMove = (e: MouseEvent) => {
+      const onMove = (e: Event) => {
+        const mouseEvent = e as MouseEvent;
         const rect = element.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
+        const x = mouseEvent.clientX - rect.left - rect.width / 2;
+        const y = mouseEvent.clientY - rect.top - rect.height / 2;
         xSet(x * 0.3);
         ySet(y * 0.2);
       };

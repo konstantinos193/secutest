@@ -26,8 +26,8 @@ export default function LayoutContent({
       <Header />
       <main>{children}</main>
       <Footer />
-      <Cursor size={24} trailEffect={true} magneticEffect={true} />
-      <PageGridMask gridSize={80} glowSize={250} glowIntensity={0.15} />
+      <Cursor />
+      <PageGridMask />
     </div>
   );
 } 
